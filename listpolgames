@@ -12,7 +12,7 @@ print("<openbox_pipe_menu>")
 for game in onlyFiles:
 	print("		<item label=\"" + game + "\">")
 	print("			<action name=\"Execute\">")
-	print("				<execute>"+ dir + game +"</execute>")
+	print("				<execute>\""+ dir + game +"\"</execute>")
 	print("			</action>")
 	print("		</item>")
 print("</openbox_pipe_menu>")
