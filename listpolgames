@@ -8,11 +8,11 @@ dir=home+"/.PlayOnLinux/shortcuts/"
 onlyFiles = [ f for f in listdir(dir) if isfile(join(dir,f)) ]
 onlyFiles.sort()
 
+print("<openbox_pipe_menu>")
 for game in onlyFiles:
-	print("<item label=\"" + game + "\">")
-	print("		<action name=\"Execute\">")
-	print("			<execute>"+ dir + game +"</execute>")
-	print("		</action>")
-	print("</item>")
-
-
+	print("		<item label=\"" + game + "\">")
+	print("			<action name=\"Execute\">")
+	print("				<execute>"+ dir + game +"</execute>")
+	print("			</action>")
+	print("		</item>")
+print("</openbox_pipe_menu>")
