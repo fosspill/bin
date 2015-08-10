@@ -1,20 +1,25 @@
-#!/bin/python
+#!/bin/bash
 #TO DO: Convert to bash. Include cb-include.cfg!
 
-from os import listdir
-from os.path import isfile, join, expanduser
+if ! . cb-include.cfg 2> /dev/null; then
+    echo '<openbox_pipe_menu>'
+    echo '	<item label="Failed to locate cb-include.cfg in PATH">'
+    echo '		<action name="Execute">'
+    echo '			<execute>sakura</execute>'
+    echo '		</action>'
+    echo '	</item>'
+    echo '</openbox_pipe_menu>'
+    exit 1
+fi
 
-home = expanduser("~")
-dir=home+"/.PlayOnLinux/shortcuts/"
+FILES=$HOME/.PlayOnLinux/shortcuts/*
 
-onlyFiles = [ f for f in listdir(dir) if isfile(join(dir,f)) ]
-onlyFiles.sort()
+menuStart
 
-print("<openbox_pipe_menu>")
-for game in onlyFiles:
-	print("		<item label=\"" + game + "\">")
-	print("			<action name=\"Execute\">")
-	print("					<execute>playonlinux --run \""+ game +"\"</execute>")
-	print("			</action>")
-	print("		</item>")
-print("</openbox_pipe_menu>")
+for f in $FILES
+do
+	GAME=$(echo "${f##*/}")
+	menuItem "$GAME" "playonlinux --run \"$GAME\""
+done
+
+menuEnd
