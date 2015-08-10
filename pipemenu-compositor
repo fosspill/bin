@@ -8,7 +8,13 @@
 RESTART_ATTEMPTS=20
 
 if ! . cb-include.cfg 2> /dev/null; then
-    echo '  Failed to locate cb-include.cfg in PATH' >&2
+    echo '<openbox_pipe_menu>'
+    echo '	<item label="Failed to locate cb-include.cfg in PATH">'
+    echo '		<action name="Execute">'
+    echo '			<execute>sakura</execute>'
+    echo '		</action>'
+    echo '	</item>'
+    echo '</openbox_pipe_menu>'
     exit 1
 fi
 

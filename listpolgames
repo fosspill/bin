@@ -1,4 +1,6 @@
 #!/bin/python
+#TO DO: Convert to bash. Include cb-include.cfg!
+
 from os import listdir
 from os.path import isfile, join, expanduser
 
