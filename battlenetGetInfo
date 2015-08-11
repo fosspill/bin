@@ -8,21 +8,11 @@ function getData {
 	 echo $RESULT | jq .$1 | fold -s
 }
 
+if [ -n "$3" ]
+then
+	getData $3
+else
+	echo $"Usage: $0 realm character {level|name|achievementPoints|thumbnail|++}"
+	exit 1 
+fi
 
-case "$3" in
-	level)
-		getData $3
-		;;
-	name)
-		getData $3
-		;;
-	achievementPoints)
-		getData $3
-		;;
-	thumbnail)
-		getData $3
-		;;
-	*)
-		echo $"Usage: $0 realm character {level|name|achievementPoints|thumbnail}"
-		exit 1
-esac
