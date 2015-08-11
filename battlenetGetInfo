@@ -1,0 +1,28 @@
+#!/bin/bash
+REALM="$1"
+CHAR="$2"
+
+RESULT=$(curl -s -l "https://eu.api.battle.net/wow/character/$REALM/$CHAR?locale=en_GB&apikey=dudk36c9ejqg3mjb6qm9qmhv4ckde5wh")
+
+function getData {
+	 echo $RESULT | jq .$1 | fold -s
+}
+
+
+case "$3" in
+	level)
+		getData $3
+		;;
+	name)
+		getData $3
+		;;
+	achievementPoints)
+		getData $3
+		;;
+	thumbnail)
+		getData $3
+		;;
+	*)
+		echo $"Usage: $0 realm character {level|name|achievementPoints|thumbnail}"
+		exit 1
+esac
