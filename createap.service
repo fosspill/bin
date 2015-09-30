@@ -1,9 +1,13 @@
 [Unit]
-Description=Start AP
-Wants=network-online.target
-After=network-online.target network.target
-
+Description=Create AP Service
+After=network.target
+ 
 [Service]
-ExecStart=create_ap wlp2s0 enp1s0 MYWIFI MYSUPERPASS
+Type=simple
+ExecStart=/usr/bin/create_ap wlp2s0 enp1s0 MYWIFI MYSUPERPASS
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5
+ 
 [Install]
 WantedBy=multi-user.target
