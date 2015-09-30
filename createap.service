@@ -1,0 +1,9 @@
+[Unit]
+Description=Start AP
+Wants=network-online.target
+After=network-online.target network.target
+
+[Service]
+ExecStart=create_ap wlp2s0 enp1s0 MYWIFI MYSUPERPASS
+[Install]
+WantedBy=multi-user.target
